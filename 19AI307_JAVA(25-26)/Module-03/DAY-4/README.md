@@ -1,79 +1,76 @@
-# Ex.No:3(D) INTERFACE 
+# Ex.No:3(E) INNER CLASS
 
 ## QUESTION:
-Two types of traffic controllers decide whether a vehicle can pass based on signal color. The decision logic varies by controller.
-AggressiveController: Allows only if "GREEN".
-DefensiveController: Allows for "GREEN" or "YELLOW".
+Write a Java program to demonstrate the concept of **Inner Class**.
+
 
 ## AIM:
-To develop a Java program that decides whether a vehicle can move or must stop based on the signal color and the type of traffic controller (Aggressive or Defensive) using interfaces.
+To write a Java program to demonstrate the **Inner Class concept by accessing inner class methods from outer class**.
+
 
 ## ALGORITHM :
-1. Define an interface `TrafficController` with the method:
-   - `boolean canGo(String signalColor)`
-2. Create class `AggressiveController` implementing the interface:
-   - Allows passage only if the signal color is GREEN.
-3. Create class `DefensiveController` implementing the interface:
-   - Allows passage if the signal color is GREEN or YELLOW.
-4. In the `main` method:
-   - Read `color` (signal color)
-   - Read `type` (controller type: 1 or 2)
-5. Based on `type`:
-   - If 1 → create `AggressiveController`
-   - Else → create `DefensiveController`
-6. Call `canGo(color)` to check permission.
-7. If true → print `"GO"`
-   - Else → print `"STOP"`
-8. End the program.
+1. Start the program.  
+2. Import the necessary package `java.util`.  
+3. Create a class `OuterClass`.  
+4. Inside it, create an inner class `InnerClass`.  
+5. Define a method `display()` in the inner class to print a message.  
+6. In the outer class, create a method `accessInner()` to create an object of the inner class.  
+7. Call the inner class method using the object.  
+8. In the `main()` method, create a `Scanner` object.  
+9. Read the name from the user.  
+10. Create an object of `OuterClass`.  
+11. Call the method to access the inner class.  
+12. Display the output.  
+13. Stop the program.
+
 
 ## PROGRAM:
-  ```
+
+```java
 /*
-Program to implement a conditional statement using Java
+Program to implement Inner Class using Java
 Developed by: Namachivayam T
 Register Number:212223060179
 */
-```
 
-## SOURCE CODE:
-```
-import java.util.*;
+import java.util.Scanner;
 
-interface TrafficController {
-    boolean canGo(String signalColor);
-}
+class OuterClass{
 
-class AggressiveController implements TrafficController {
-    public boolean canGo(String signalColor) {
-        return signalColor.equalsIgnoreCase("GREEN");
+    class InnerClass{
+        public void display(String name){
+            System.out.println("Hello, " + name + "! This message is from the Inner Class.");
+        }
+    }
+
+    public void accessInner(String name){
+        InnerClass inner = new InnerClass();
+        inner.display(name);
     }
 }
 
-class DefensiveController implements TrafficController {
-    public boolean canGo(String signalColor) {
-        return signalColor.equalsIgnoreCase("GREEN") || signalColor.equalsIgnoreCase("YELLOW");
-    }
-}
-
-public class prog {
-    public static void main(String[] args) {
+public class Main{
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        String color = sc.next();
-        int type = sc.nextInt();
 
-        TrafficController ctrl = (type == 1) ? new AggressiveController() : new DefensiveController();
+        String name = sc.nextLine().trim();
 
-        if (ctrl.canGo(color))
-            System.out.println("GO");
-        else
-            System.out.println("STOP");
+        OuterClass outer = new OuterClass();
+        outer.accessInner(name);
     }
 }
 ```
+
+
+
+
 
 ## OUTPUT:
-<img width="431" height="202" alt="image" src="https://github.com/user-attachments/assets/893c86c5-b2f8-4240-8d2b-98ca05b093a6" />
+
+<img width="1015" height="227" alt="image" src="https://github.com/user-attachments/assets/83606ba7-2c05-4889-8c55-ea8e341e93d8" />
+
+
 
 ## RESULT:
-The program successfully determines whether a vehicle can move based on the signal color and controller type using interface-based polymorphism.
 
+Thus, the Java program to demonstrate the **Inner Class concept** was executed successfully and the output was verified.
